@@ -1,14 +1,15 @@
 dir <- getwd()
 setwd(dir)
 
-# https://ourworldindata.org/coronavirus
+# https://ourworldindata.org/grapher/total-deaths-and-cases-covid-19
 covid_data <- read.csv("total-deaths-and-cases-covid-19.csv",header = TRUE)
 
 #class(covid_data$Date)
-covid_data$Date <- as.Date(covid_data$Date,"%d-%b-%y")
+#file date format seems to change as.Date(covid_data$Date,"%d-%b-%y") 
+covid_data$Date <- as.Date(covid_data$Date,"%b %d, %Y")
 
-#create a dataframe of a subset of the data for April 14
-df <- subset(covid_data, Date > as.Date("2020-04-13"))
+#create a dataframe of a subset of the data for April 15
+df <- subset(covid_data, Date > as.Date("2020-04-14"))
 
 #Fix discrenpency in how USA is labeled 
 df$Entity <- as.character(df$Entity)
@@ -32,7 +33,7 @@ df4 <- df3[, c("Entity","Total.confirmed.deaths..deaths.","Total.confirmed.cases
 #add our calculations to that dataframe
 df4$PerCapita.Death <-  df4$Total.confirmed.deaths..deaths. / df4$PopTotal
 df4$PerCapita.Infection <-  df4$Total.confirmed.cases..cases. / df4$PopTotal
-df4$Death.Rate <-   df4$Total.confirmed.deaths..deaths. / df4$Total.confirmed.cases..cases.
+df4$Death.Rate <-   df4$Total.confirmed.deaths..deaths. / df4$Total.confirmed.cases..cases. 
 
 #save output as csv
 write.csv(df4, file="output.csv")
