@@ -8,8 +8,8 @@ covid_data <- read.csv("total-deaths-and-cases-covid-19.csv",header = TRUE)
 #file date format seems to change as.Date(covid_data$Date,"%d-%b-%y") 
 covid_data$Date <- as.Date(covid_data$Date,"%b %d, %Y")
 
-#create a dataframe of a subset of the data for April 15
-df <- subset(covid_data, Date > as.Date("2020-04-14"))
+#create a dataframe of a subset of the data for April 16
+df <- subset(covid_data, Date > as.Date("2020-04-15"))
 
 #Fix discrenpency in how USA is labeled 
 df$Entity <- as.character(df$Entity)
