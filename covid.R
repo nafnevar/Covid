@@ -5,7 +5,6 @@ setwd(dir)
 covid_data <- read.csv("total-deaths-and-cases-covid-19.csv",header = TRUE)
 
 #class(covid_data$Date)
-#file date format seems to change as.Date(covid_data$Date,"%d-%b-%y") 
 covid_data$Date <- as.Date(covid_data$Date,"%b %d, %Y")
 
 #create a dataframe of a subset of the data for April 17
