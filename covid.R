@@ -7,8 +7,8 @@ covid_data <- read.csv("total-deaths-and-cases-covid-19.csv",header = TRUE)
 #class(covid_data$Date)
 covid_data$Date <- as.Date(covid_data$Date,"%b %d, %Y")
 
-#create a dataframe of a subset of the data for April 19
-df <- subset(covid_data, Date > as.Date("2020-04-18"))
+#create a dataframe of a subset of the data for April 20
+df <- subset(covid_data, Date > as.Date("2020-04-19"))
 
 #Fix discrenpency in how USA is labeled 
 df$Entity <- as.character(df$Entity)
